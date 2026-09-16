@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+  <title>Parthiban & Kavya — Wedding Invitation | November 14 & 15, 2026</title>
+  
+  <!-- SEO & Social Sharing Meta Tags -->
+  <meta name="description" content="We cordially invite you with family and friends to grace the auspicious wedding celebration of Parthiban & Kavya on November 14 & 15, 2026 in Chennai.">
+  <meta property="og:title" content="Parthiban & Kavya — Wedding Invitation">
+  <meta property="og:description" content="You are warmly invited to celebrate the wedding of Parthiban & Kavya on November 14 & 15, 2026 at Sri Padmavathi Mahal, Chennai.">
+  <meta property="og:image" content="assets/welcome_card.jpeg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#3b0811">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Falling Petals / Gold Dust Particles Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Background Music Audio Element -->
+  <audio id="wedding-audio" preload="auto" loop>
+    <source src="assets/bg_music.m4a" type="audio/mp4">
+  </audio>
+
+  <!-- ============================================================ -->
+  <!-- 1. ENVELOPE OPENING EXPERIENCE (Royal 3D Wax Seal Animation) -->
+  <!-- ============================================================ -->
+  <section id="envelope-screen" class="envelope-screen" aria-label="Wedding Envelope">
+    <div class="envelope-ambient-glow"></div>
+    
+    <div class="envelope-wrapper" id="envelope-wrapper">
+      
+      <!-- Top Decorative Monogram Header -->
+      <div class="envelope-header-text">
+        <span class="sacred-symbol">ॐ</span>
+        <p class="envelope-sub">An Auspicious Union</p>
+      </div>
+
+      <!-- 3D Envelope Component -->
+      <div class="envelope-3d" id="envelope-3d">
+        <!-- Envelope Back Face -->
+        <div class="env-back"></div>
+        
+        <!-- Folded Letter / Card Inside Envelope -->
+        <div class="env-letter" id="env-letter">
+          <div class="env-letter-inner">
+            <span class="letter-om">|| ॐ ||</span>
+            <h3 class="letter-names">Parthiban & Kavya</h3>
+            <p class="letter-date">14 & 15 November 2026</p>
+            <span class="letter-sparkle">✨</span>
+          </div>
+        </div>
+
+        <!-- Envelope Pocket Body (Bottom & Sides) -->
+        <div class="env-pocket"></div>
+
+        <!-- 3D Top Flap that Flips Open -->
+        <div class="env-flap" id="env-flap">
+          <div class="env-flap-inner"></div>
+        </div>
+
+        <!-- Royal Wax Seal (Clickable Trigger) -->
+        <div class="wax-seal-container" id="wax-seal-btn" role="button" tabindex="0" aria-label="Open wedding invitation">
+          <div class="wax-seal-pulse"></div>
+          <div class="wax-seal">
+            <div class="wax-seal-rim"></div>
+            <div class="wax-seal-center">
+              <span class="wax-monogram">P &amp; K</span>
+              <span class="wax-knot">💍</span>
+            </div>
+          </div>
+          <div class="seal-glow-ring"></div>
+        </div>
+      </div>
+
+      <!-- Hint & Call to Action -->
+      <div class="envelope-prompt" id="envelope-prompt">
+        <p class="prompt-text">Tap the golden wax seal to open</p>
+        <div class="prompt-arrow">↓</div>
+      </div>
+
+      <!-- Reel-Style Bottom Floating Bar on Envelope -->
+      <div class="envelope-reel-bar">
+        <div class="reel-badge">
+          <span class="reel-heart-icon">❤️</span>
+          <span class="reel-like-count" id="reel-likes-preview">1.8k</span>
+        </div>
+        <div class="reel-badge audio-hint-badge">
+          <span class="reel-music-note">🎵</span>
+          <span>Includes Wedding Melody</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================ -->
+  <!-- 2. MAIN WEDDING INVITATION WEBSITE CONTENT                   -->
+  <!-- ============================================================ -->
+  <main id="main-content" class="main-content hidden" aria-label="Wedding Invitation Details">
+
+    <!-- Top Sticky / Floating Header Bar -->
+    <header class="top-nav-bar" id="top-nav-bar">
+      <div class="nav-brand">
+        <span class="nav-monogram">P &amp; K</span>
+      </div>
+      <div class="nav-actions">
+        <!-- Like Button with Counter -->
+        <button class="nav-btn like-btn" id="like-btn" aria-label="Like invitation">
+          <span class="heart-icon" id="heart-icon">❤️</span>
+          <span class="like-number" id="like-count">1,842</span>
+        </button>
+
+        <!-- Audio Control Toggle -->
+        <button class="nav-btn audio-btn" id="audio-toggle-btn" aria-label="Toggle background music">
+          <div class="equalizer" id="equalizer-bars">
+            <span class="eq-bar bar-1"></span>
+            <span class="eq-bar bar-2"></span>
+            <span class="eq-bar bar-3"></span>
+            <span class="eq-bar bar-4"></span>
+          </div>
+          <span class="audio-label" id="audio-label">Music</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Container (Mobile Phone Frame Container) -->
+    <div class="site-container">
+
+      <!-- ================= HERO SECTION ================= -->
+      <section class="hero-section" id="hero-section">
+        <div class="hero-card">
+          <!-- Traditional Temple Arch & Garland Ornaments -->
+          <div class="royal-arch-top">
+            <div class="jasmine-garland garland-left"></div>
+            <div class="om-emblem">
+              <span class="om-text">ॐ</span>
+              <p class="tamil-blessing">இரு மனம் ஓர் மனம் ஆகும் திருமணத்திற்கு<br>வருகை தாருங்கள்!</p>
+            </div>
+            <div class="jasmine-garland garland-right"></div>
+          </div>
+
+          <!-- Auspicious Invitation Text -->
+          <div class="invitation-intro">
+            <p class="sub-blessing">With the blessings of our elders,</p>
+            <p class="invite-msg">we cordially invite you with family and friends to grace the auspicious occasion of our</p>
+            <h1 class="wedding-script-title">Wedding</h1>
+          </div>
+
+          <!-- Animated Traditional Cartoon Couple Illustration -->
+          <div class="couple-hero-visual">
+            <div class="mandap-light-aura"></div>
+            <picture>
+              <source srcset="assets/couple_traditional.webp" type="image/webp">
+              <img src="assets/couple_traditional.png" alt="Parthiban and Kavya Traditional South Indian Wedding Illustration" class="couple-cutout-img" id="couple-cutout-img" loading="eager">
+            </picture>
+            <div class="hanging-diya diya-left">🪔</div>
+            <div class="hanging-diya diya-right">🪔</div>
+          </div>
+
+          <!-- Couple Details & Names -->
+          <div class="couple-details">
+            <!-- Groom Card -->
+            <div class="person-card groom-card">
+              <span class="honorific">Selvan</span>
+              <h2 class="person-name">S. PARTHIBAN<span class="degree">, M.B.A.</span></h2>
+              <p class="profession">Sr. SDET, Caratlane Trading Pvt. Ltd.</p>
+              <div class="parents-block">
+                <span class="parent-label">Son of</span>
+                <p class="parent-names">Mr. P. Srinivasan &amp; Mrs. Ramya Srinivasan</p>
+              </div>
+            </div>
+
+            <!-- Auspicious Golden Knot Divider -->
+            <div class="wedding-knot-divider">
+              <span class="knot-line"></span>
+              <span class="knot-badge">with</span>
+              <span class="knot-line"></span>
+            </div>
+
+            <!-- Bride Card -->
+            <div class="person-card bride-card">
+              <span class="honorific">Selvi</span>
+              <h2 class="person-name">V. KAVYA<span class="degree">, M.B.A.</span></h2>
+              <p class="profession">Dept. Manager, Reliance Retail Ltd.</p>
+              <div class="parents-block">
+                <span class="parent-label">Daughter of</span>
+                <p class="parent-names">Late Mr. M. Venkatesan &amp; Mrs. Latha Venkatesan</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Floral Border -->
+          <div class="card-bottom-ornament">
+            <span class="diya-glow">✨</span>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ================= INTERACTIVE SCRATCH TO REVEAL CARD ================= -->
+      <!-- Inspired directly by the Instagram Reel! -->
+      <section class="scratch-section" id="scratch-section">
+        <div class="section-card scratch-card">
+          <div class="section-badge">
+            <span class="badge-icon">✨</span>
+            <span>Interactive Reveal</span>
+          </div>
+          
+          <h2 class="section-title">Scratch to Reveal</h2>
+          <p class="scratch-instruction">Use your finger or mouse to scratch the golden heart and reveal the wedding date!</p>
+
+          <!-- Scratch Canvas Container -->
+          <div class="scratch-box-wrapper">
+            
+            <!-- Underneath Revealed Content -->
+            <div class="scratch-reveal-content" id="scratch-reveal-content">
+              <div class="reveal-inner">
+                <span class="reveal-heart-badge">💖</span>
+                <p class="reveal-script">Our forever begins</p>
+                <h3 class="reveal-date">November 14 &amp; 15, 2026</h3>
+                <p class="reveal-venue-brief">Chennai, Tamil Nadu</p>
+                <div class="reveal-status">
+                  <span class="status-dot"></span>
+                  <span>You're Cordially Invited!</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Foreground Canvas Scratch Surface -->
+            <canvas id="scratch-canvas" class="scratch-canvas" width="320" height="260"></canvas>
+            
+            <!-- Shimmer overlay on canvas -->
+            <div class="scratch-shimmer" id="scratch-shimmer"></div>
+          </div>
+
+          <!-- Save The Date Action Dropdown / Buttons -->
+          <div class="save-the-date-container">
+            <button class="primary-gold-btn" id="save-date-toggle-btn" aria-expanded="false">
+              <span class="btn-icon">📅</span>
+              <span class="btn-text">SAVE THE DATE</span>
+              <span class="dropdown-chevron">▼</span>
+            </button>
+            
+            <div class="calendar-dropdown hidden" id="calendar-dropdown">
+              <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Celebration%3A+Parthiban+%26+Kavya&dates=20261114T123000Z/20261115T060000Z&details=Wedding+ceremony+of+Parthiban+%26+Kavya.+Reception%3A+14th+Nov+6PM.+Muhurtham%3A+15th+Nov+7AM.&location=Sri+Padmavathi+Mahal+Thirumana+Mandapam%2C+Old+Perungalathur%2C+Chennai" target="_blank" rel="noopener noreferrer" class="cal-option-btn">
+                <span class="cal-icon">🗓️</span>
+                <span>Google Calendar</span>
+              </a>
+              <button class="cal-option-btn" id="download-ics-btn">
+                <span class="cal-icon">🍎</span>
+                <span>Apple Calendar / Outlook (.ics)</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ================= LIVE COUNTDOWN TO FOREVER ================= -->
+      <section class="countdown-section" id="countdown-section">
+        <div class="section-card countdown-card">
+          <div class="section-badge">
+            <span class="badge-icon">⏳</span>
+            <span>The Big Day</span>
+          </div>
+          <h2 class="section-title">Counting Down to Forever</h2>
+          <p class="countdown-sub">Until Muhurtham on Sunday, 15 November 2026 • 7:00 AM</p>
+
+          <div class="countdown-grid" id="countdown-grid">
+            <div class="timer-box">
+              <div class="timer-val-wrap">
+                <span class="timer-value" id="days-val">--</span>
+              </div>
+              <span class="timer-unit">DAYS</span>
+            </div>
+            <div class="timer-separator">:</div>
+            <div class="timer-box">
+              <div class="timer-val-wrap">
+                <span class="timer-value" id="hours-val">--</span>
+              </div>
+              <span class="timer-unit">HOURS</span>
+            </div>
+            <div class="timer-separator">:</div>
+            <div class="timer-box">
+              <div class="timer-val-wrap">
+                <span class="timer-value" id="minutes-val">--</span>
+              </div>
+              <span class="timer-unit">MINUTES</span>
+            </div>
+            <div class="timer-separator">:</div>
+            <div class="timer-box">
+              <div class="timer-val-wrap">
+                <span class="timer-value" id="seconds-val">--</span>
+              </div>
+              <span class="timer-unit">SECONDS</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ================= WELCOME & COUPLE SHOWCASE ================= -->
+      <section class="couple-gallery-section" id="gallery-section">
+        <div class="section-card welcome-portrait-card">
+          <div class="polaroid-frame">
+            <div class="portrait-img-wrap">
+              <img src="assets/welcome_card.jpeg" alt="Parthiban & Kavya Welcome Card" class="welcome-portrait-img" loading="lazy">
+            </div>
+            <div class="polaroid-caption">
+              <p class="caption-script">"Together is a beautiful place to be"</p>
+              <p class="caption-names">Parthiban &amp; Kavya</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ================= PROGRAMME TIMELINE ================= -->
+      <section class="timeline-section" id="timeline-section">
+        <div class="section-card timeline-card">
+          <div class="section-badge">
+            <span class="badge-icon">🪷</span>
+            <span>Auspicious Schedule</span>
+          </div>
+          <h2 class="section-title">Programme Timeline</h2>
+          <p class="timeline-sub">Join us in the celebrations and sacred rituals</p>
+
+          <div class="timeline-container">
+            
+            <!-- Event 1: Reception & Dinner -->
+            <div class="timeline-item">
+              <div class="timeline-dot-wrapper">
+                <div class="timeline-dot gold-pulse">
+                  <span class="dot-inner">✨</span>
+                </div>
+                <div class="timeline-line"></div>
+              </div>
+              <div class="timeline-event-card">
+                <div class="event-date-badge">
+                  <span class="cal-day">14.11.2026</span>
+                  <span class="cal-name">Saturday</span>
+                </div>
+                <h3 class="event-title">Reception &amp; Sangeet Evening</h3>
+                <div class="event-time-row">
+                  <span class="clock-icon">🕒</span>
+                  <span class="event-time">6:00 p.m. to 7:00 p.m.</span>
+                </div>
+                <div class="event-time-row feast-row">
+                  <span class="clock-icon">🍽️</span>
+                  <span class="event-time">Dinner from 7:30 p.m. onwards</span>
+                </div>
+                <p class="event-desc">An evening of music, warm conversations, heartfelt congratulations, and a sumptuous grand feast.</p>
+              </div>
+            </div>
+
+            <!-- Event 2: Auspicious Muhurtham -->
+            <div class="timeline-item">
+              <div class="timeline-dot-wrapper">
+                <div class="timeline-dot gold-pulse">
+                  <span class="dot-inner">🪔</span>
+                </div>
+              </div>
+              <div class="timeline-event-card highlight-event">
+                <div class="event-date-badge sacred-badge">
+                  <span class="cal-day">15.11.2026</span>
+                  <span class="cal-name">Sunday</span>
+                </div>
+                <h3 class="event-title">Auspicious Muhurtham</h3>
+                <div class="event-time-row">
+                  <span class="clock-icon">☀️</span>
+                  <span class="event-time sacred-time">7:00 a.m. to 8:30 a.m.</span>
+                </div>
+                <div class="event-time-row feast-row">
+                  <span class="clock-icon">🍌</span>
+                  <span class="event-time">Traditional South Indian Wedding Sadhya (Breakfast)</span>
+                </div>
+                <p class="event-desc">The sacred thali-tying ceremony with Vedic chants, followed by traditional banana-leaf breakfast.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ================= VENUE & DIRECTIONS ================= -->
+      <section class="venue-section" id="venue-section">
+        <div class="section-card venue-card">
+          <div class="section-badge">
+            <span class="badge-icon">📍</span>
+            <span>Wedding Venue</span>
+          </div>
+          <h2 class="section-title">Sri Padmavathi Mahal A/c</h2>
+          <h3 class="venue-mandapam">Thirumana Mandapam</h3>
+          
+          <div class="venue-address-box" id="venue-address-box">
+            <p class="address-line">No. 11, Mudichur Road,</p>
+            <p class="address-line">Old Perungalathur,</p>
+            <p class="address-line city-pin">Chennai – 600 063, Tamil Nadu</p>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="venue-actions">
+            <a href="https://www.google.com/maps/search/?api=1&query=Sri+Padmavathi+Mahal+A/c+Thirumana+Mandapam+Mudichur+Road+Old+Perungalathur+Chennai" target="_blank" rel="noopener noreferrer" class="primary-gold-btn maps-link-btn" id="open-maps-btn">
+              <span class="btn-icon">🗺️</span>
+              <span class="btn-text">Open in Google Maps</span>
+            </a>
+          </div>
+
+          <!-- View Original Printed Card Toggle -->
+          <div class="original-card-peek">
+            <button class="text-link-btn" id="view-original-card-btn">
+              <span>📜 View Original Printed Invitation Card</span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ================= COMPLIMENTS & FOOTER ================= -->
+      <footer class="footer-section">
+        <div class="footer-card">
+          <div class="tamil-poem-box">
+            <p class="tamil-poem-line">கனவுகளில் கண்ட காதல் முகம்,</p>
+            <p class="tamil-poem-line">காலம் முழுதும் துணையாகும் நிஜம்…</p>
+          </div>
+          <span class="footer-diya">🪔</span>
+          <p class="compliments-intro">With Best Compliments From</p>
+          <h2 class="compliments-title">Friends &amp; Relatives</h2>
+          <div class="footer-divider"></div>
+          <p class="footer-couple">Parthiban &amp; Kavya</p>
+          <p class="footer-tagline">We cannot wait to celebrate this special day with you! ✨</p>
+          <div class="share-invite-box">
+            <button class="share-btn" id="share-invite-btn">
+              <span class="btn-icon">🔗</span>
+              <span>Share Wedding Invitation</span>
+            </button>
+          </div>
+        </div>
+      </footer>
+
+    </div><!-- End site-container -->
+
+
+    <!-- ================= FLOATING MOBILE ACTION BAR ================= -->
+    <nav class="bottom-action-bar" aria-label="Quick mobile navigation">
+      <a href="#hero-section" class="bar-link active" id="bar-home">
+        <span class="bar-icon">🏠</span>
+        <span class="bar-label">Home</span>
+      </a>
+      <a href="#timeline-section" class="bar-link" id="bar-timeline">
+        <span class="bar-icon">🕒</span>
+        <span class="bar-label">Program</span>
+      </a>
+      <a href="#venue-section" class="bar-link" id="bar-venue">
+        <span class="bar-icon">📍</span>
+        <span class="bar-label">Venue</span>
+      </a>
+      <button class="bar-link share-action" id="bar-share">
+        <span class="bar-icon">📤</span>
+        <span class="bar-label">Share</span>
+      </button>
+    </nav>
+
+  </main>
+
+
+  <!-- ================= ORIGINAL CARD MODAL ================= -->
+  <div class="modal-overlay hidden" id="card-modal" role="dialog" aria-modal="true" aria-label="Original printed invitation">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="close-modal-btn" aria-label="Close modal">&times;</button>
+      <div class="modal-img-wrap">
+        <img src="assets/invitation_original.jpeg" alt="Original printed wedding invitation card" class="modal-img">
+      </div>
+      <p class="modal-caption">Original Printed Wedding Invitation Card</p>
+    </div>
+  </div>
+
+
+  <!-- ================= TOAST NOTIFICATION CONTAINER ================= -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+</html>
