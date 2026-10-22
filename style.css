@@ -302,6 +302,8 @@ body {
   position: absolute;
   top: 100px;
   left: 50%;
+  width: 68px;
+  height: 68px;
   transform: translate(-50%, -20%) scale(1);
   z-index: 5;
   cursor: pointer;
@@ -378,30 +380,57 @@ body {
   100% { transform: scale(1.5); opacity: 0; }
 }
 
-/* Prompt Below Envelope */
+/* Prompt centered under P & K seal — outside envelope so fully visible */
 .envelope-prompt {
-  margin-top: 36px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 14px;
   text-align: center;
+  z-index: 6;
+  pointer-events: none;
   animation: float-prompt 2s infinite ease-in-out;
 }
 
 .prompt-text {
   font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--gold-light);
-  letter-spacing: 0.5px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff8e7;
+  letter-spacing: 0.4px;
+  line-height: 1.35;
+  margin: 0;
+  padding: 10px 16px;
+  border-radius: var(--radius-round);
+  background: rgba(20, 2, 6, 0.9);
+  border: 1px solid rgba(255, 215, 120, 0.85);
+  box-shadow:
+    0 0 20px rgba(230, 194, 96, 0.55),
+    0 4px 14px rgba(0, 0, 0, 0.55);
+  text-shadow:
+    0 0 10px rgba(255, 215, 100, 0.75),
+    0 1px 2px rgba(0, 0, 0, 0.9);
 }
 
 .prompt-arrow {
-  color: var(--gold-primary);
-  font-size: 1.1rem;
-  margin-top: 4px;
+  color: #ffe28a;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  text-shadow: 0 0 12px rgba(255, 215, 100, 0.95);
+  line-height: 1;
 }
 
 @keyframes float-prompt {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
+  50% { transform: translateY(5px); }
+}
+
+.envelope-screen.opened .envelope-prompt {
+  opacity: 0;
 }
 
 /* Bottom Reel Bar on Envelope */
@@ -410,7 +439,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 18px;
 }
 
 .reel-badge {

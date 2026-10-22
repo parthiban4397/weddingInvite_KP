@@ -11,9 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const envLetter = document.getElementById('env-letter');
   const mainContent = document.getElementById('main-content');
   const weddingAudio = document.getElementById('wedding-audio');
-  if (weddingAudio) {
-    weddingAudio.volume = 0.8; // Reduced by 2 points (from 1.0 to 0.8)
-  }
+  const AUDIO_VOLUME = 0.3;
   const audioToggleBtn = document.getElementById('audio-toggle-btn');
   const audioLabel = document.getElementById('audio-label');
   const likeBtn = document.getElementById('like-btn');
@@ -23,6 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let isAudioPlaying = false;
   let envelopeOpened = false;
+
+  function setInviteVolume() {
+    if (!weddingAudio) return;
+    weddingAudio.volume = AUDIO_VOLUME;
+  }
+
+  if (weddingAudio) {
+    setInviteVolume();
+    weddingAudio.addEventListener('playing', setInviteVolume);
+    weddingAudio.addEventListener('loadeddata', setInviteVolume);
+  }
 
   // --------------------------------------------------------------------------
   // 1. BACKGROUND FLOATING PARTICLES (GOLD DUST & PETALS)
@@ -128,8 +137,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Play Background Music
+    // Play Background Music, then force lower volume after open
     playAudio();
+    setInviteVolume();
+    setTimeout(setInviteVolume, 150);
+    setTimeout(setInviteVolume, 600);
+    setTimeout(setInviteVolume, 1400);
 
     // Wax seal breaking animation
     waxSealBtn.classList.add('breaking');
@@ -148,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       mainContent.classList.remove('hidden');
       envelopeScreen.classList.add('opened');
+      setInviteVolume();
       
       // Secondary celebration confetti
       if (typeof confetti === 'function') {
@@ -168,8 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
   function playAudio() {
     if (!weddingAudio) return;
-    weddingAudio.volume = 0.8;
+    setInviteVolume();
     weddingAudio.play().then(() => {
+      setInviteVolume();
       isAudioPlaying = true;
       audioToggleBtn.classList.add('playing');
       audioLabel.textContent = 'Music On';
@@ -190,7 +205,9 @@ document.addEventListener('DOMContentLoaded', () => {
       audioLabel.textContent = 'Play';
       showToast('Music paused');
     } else {
+      setInviteVolume();
       weddingAudio.play().then(() => {
+        setInviteVolume();
         isAudioPlaying = true;
         audioToggleBtn.classList.add('playing');
         audioLabel.textContent = 'Music On';
