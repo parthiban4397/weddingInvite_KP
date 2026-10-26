@@ -397,22 +397,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const downloadIcsBtn = document.getElementById('download-ics-btn');
 
   if (saveDateBtn && calendarDropdown) {
-    saveDateBtn.addEventListener('click', () => {
-      const isHidden = calendarDropdown.classList.contains('hidden');
-      if (isHidden) {
-        calendarDropdown.classList.remove('hidden');
-        saveDateBtn.setAttribute('aria-expanded', 'true');
-      } else {
-        calendarDropdown.classList.add('hidden');
-        saveDateBtn.setAttribute('aria-expanded', 'false');
-      }
+    const setSaveDateOpen = (open) => {
+      calendarDropdown.classList.toggle('hidden', !open);
+      saveDateBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+
+    saveDateBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const willOpen = calendarDropdown.classList.contains('hidden');
+      setSaveDateOpen(willOpen);
     });
 
-    // Close on outside click
-    document.addEventListener('click', (e) => {
+    // Close on outside tap/click (use pointerdown so mobile is reliable)
+    document.addEventListener('pointerdown', (e) => {
       if (!saveDateBtn.contains(e.target) && !calendarDropdown.contains(e.target)) {
-        calendarDropdown.classList.add('hidden');
-        saveDateBtn.setAttribute('aria-expanded', 'false');
+        setSaveDateOpen(false);
       }
     });
   }
