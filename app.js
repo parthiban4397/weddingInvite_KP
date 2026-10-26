@@ -390,68 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 6. SAVE THE DATE & CALENDAR SYNC
-  // --------------------------------------------------------------------------
-  const saveDateBtn = document.getElementById('save-date-toggle-btn');
-  const calendarDropdown = document.getElementById('calendar-dropdown');
-  const downloadIcsBtn = document.getElementById('download-ics-btn');
-
-  if (saveDateBtn && calendarDropdown) {
-    const setSaveDateOpen = (open) => {
-      calendarDropdown.classList.toggle('hidden', !open);
-      saveDateBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    };
-
-    saveDateBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const willOpen = calendarDropdown.classList.contains('hidden');
-      setSaveDateOpen(willOpen);
-    });
-
-    // Close on outside tap/click (use pointerdown so mobile is reliable)
-    document.addEventListener('pointerdown', (e) => {
-      if (!saveDateBtn.contains(e.target) && !calendarDropdown.contains(e.target)) {
-        setSaveDateOpen(false);
-      }
-    });
-  }
-
-  // Download .ics Calendar file
-  if (downloadIcsBtn) {
-    downloadIcsBtn.addEventListener('click', () => {
-      const icsData = [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'PRODID:-//Parthiban & Kavya Wedding//EN',
-        'CALSCALE:GREGORIAN',
-        'METHOD:PUBLISH',
-        'BEGIN:VEVENT',
-        'UID:parthiban-kavya-wedding-2026@wedding.com',
-        'DTSTAMP:20260913T180000Z',
-        'DTSTART:20261114T123000Z',
-        'DTEND:20261115T060000Z',
-        'SUMMARY:Wedding: Selvan S. Parthiban & Selvi V. Kavya',
-        'DESCRIPTION:You are cordially invited to celebrate the wedding of Parthiban & Kavya.\\nReception: Nov 14, 2026 (6:00 PM to 7:00 PM, Dinner 7:30 PM)\\nMuhurtham: Nov 15, 2026 (7:00 AM to 8:30 AM)',
-        'LOCATION:Sri Padmavathi Mahal A/c Thirumana Mandapam, No. 11, Mudichur Road, Old Perungalathur, Chennai - 63',
-        'STATUS:CONFIRMED',
-        'END:VEVENT',
-        'END:VCALENDAR'
-      ].join('\r\n');
-
-      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = 'Parthiban_and_Kavya_Wedding.ics';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      showToast('Calendar event downloaded! 📅');
-    });
-  }
-
-  // --------------------------------------------------------------------------
-  // 7. LIVE COUNTDOWN TIMER (Target: Nov 15, 2026 07:00:00 AM IST)
+  // 6. LIVE COUNTDOWN TIMER (Target: Nov 15, 2026 07:00:00 AM IST)
   // --------------------------------------------------------------------------
   const daysVal = document.getElementById('days-val');
   const hoursVal = document.getElementById('hours-val');

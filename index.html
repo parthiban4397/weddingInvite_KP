@@ -249,24 +249,18 @@
             <div class="scratch-shimmer" id="scratch-shimmer"></div>
           </div>
 
-          <!-- Save The Date Action Dropdown / Buttons -->
+          <!-- Save The Date — opens Google Calendar directly -->
           <div class="save-the-date-container">
-            <button class="primary-gold-btn" id="save-date-toggle-btn" aria-expanded="false">
+            <a
+              class="primary-gold-btn"
+              id="save-date-btn"
+              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Celebration%3A+Parthiban+%26+Kavya&dates=20261114T123000Z/20261115T060000Z&details=Wedding+ceremony+of+Parthiban+%26+Kavya.+Reception%3A+14th+Nov+6PM.+Muhurtham%3A+15th+Nov+7AM.&location=Sri+Padmavathi+Mahal+Thirumana+Mandapam%2C+Old+Perungalathur%2C+Chennai"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span class="btn-icon">📅</span>
               <span class="btn-text">SAVE THE DATE</span>
-              <span class="dropdown-chevron">▼</span>
-            </button>
-            
-            <div class="calendar-dropdown hidden" id="calendar-dropdown">
-              <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Celebration%3A+Parthiban+%26+Kavya&dates=20261114T123000Z/20261115T060000Z&details=Wedding+ceremony+of+Parthiban+%26+Kavya.+Reception%3A+14th+Nov+6PM.+Muhurtham%3A+15th+Nov+7AM.&location=Sri+Padmavathi+Mahal+Thirumana+Mandapam%2C+Old+Perungalathur%2C+Chennai" target="_blank" rel="noopener noreferrer" class="cal-option-btn">
-                <span class="cal-icon">🗓️</span>
-                <span>Google Calendar</span>
-              </a>
-              <button class="cal-option-btn" id="download-ics-btn">
-                <span class="cal-icon">🍎</span>
-                <span>Apple Calendar / Outlook (.ics)</span>
-              </button>
-            </div>
+            </a>
           </div>
 
         </div>

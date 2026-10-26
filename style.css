@@ -981,13 +981,12 @@ body {
   cursor: grabbing;
 }
 
-/* Save The Date Button & Dropdown */
+/* Save The Date — direct calendar link */
 .save-the-date-container {
   position: relative;
   width: 100%;
   max-width: 300px;
   margin: 0 auto;
-  z-index: 30;
 }
 
 @media (min-width: 768px) {
@@ -998,6 +997,7 @@ body {
 
 .primary-gold-btn {
   width: 100%;
+  min-height: 48px;
   padding: 14px 20px;
   border-radius: var(--radius-round);
   background: var(--gold-gradient);
@@ -1016,43 +1016,13 @@ body {
   transition: all 0.25s ease;
   text-decoration: none;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Balanced icon | label | chevron so label stays centered on mobile + laptop */
-#save-date-toggle-btn {
-  display: grid;
-  grid-template-columns: 32px minmax(0, 1fr) 32px;
-  align-items: center;
-  justify-items: center;
-  gap: 0;
-  padding: 14px 12px;
-  min-height: 48px;
-}
-
-#save-date-toggle-btn .btn-icon,
-#save-date-toggle-btn .dropdown-chevron {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  line-height: 1;
-}
-
-#save-date-toggle-btn .btn-text {
-  width: 100%;
-  text-align: center;
+#save-date-btn .btn-text {
   white-space: nowrap;
   letter-spacing: 1.2px;
   font-size: clamp(0.78rem, 2.8vw, 0.9rem);
-}
-
-#save-date-toggle-btn .dropdown-chevron {
-  font-size: 0.65rem;
-  transition: transform 0.2s ease;
-}
-
-#save-date-toggle-btn[aria-expanded="true"] .dropdown-chevron {
-  transform: rotate(180deg);
 }
 
 .primary-gold-btn:hover {
@@ -1062,57 +1032,6 @@ body {
 
 .primary-gold-btn:active {
   transform: translateY(1px);
-}
-
-.calendar-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  right: 0;
-  width: 100%;
-  background: #2b060d;
-  border: 1px solid var(--gold-border-bright);
-  border-radius: var(--radius-md);
-  padding: 8px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  z-index: 40;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-.calendar-dropdown.hidden {
-  display: none !important;
-}
-
-.cal-option-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(230, 194, 96, 0.15);
-  color: var(--text-cream);
-  padding: 12px 14px;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  text-align: left;
-  width: 100%;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.cal-option-btn:hover,
-.cal-option-btn:focus-visible {
-  background: rgba(230, 194, 96, 0.15);
-  color: var(--gold-light);
-  outline: none;
 }
 
 /* --------------------------------------------------------------------------
